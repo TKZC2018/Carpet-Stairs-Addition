@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:recipes/root",
+  "display": {
+    "icon": {
+      "id": "minecraft:minecart"
+    },
+    "title": {
+      "translate": "advancements.carpetstairsaddition.better_minecart_crafting.title"
+    },
+    "description": {
+      "translate": "advancements.carpetstairsaddition.better_minecart_crafting.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": true
+  },
+  "criteria": {
+    "craft_minecart": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "carpetstairsaddition:better_minecart_crafting"
+      }
+    }
+  },
+  "rewards": {
+    "function": "carpetstairsaddition:grant_extra_minecarts"
+  }
+}

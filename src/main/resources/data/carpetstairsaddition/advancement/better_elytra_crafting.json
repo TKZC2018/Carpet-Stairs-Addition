@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:recipes/root",
+  "display": {
+    "icon": {
+      "id": "minecraft:elytra"
+    },
+    "title": {
+      "translate": "advancements.carpetstairsaddition.better_elytra_crafting.title"
+    },
+    "description": {
+      "translate": "advancements.carpetstairsaddition.better_elytra_crafting.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": true
+  },
+  "criteria": {
+    "craft_elytra": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "carpetstairsaddition:better_elytra_crafting"
+      }
+    }
+  },
+  "rewards": {
+    "function": "carpetstairsaddition:grant_extra_elytra"
+  }
+}
