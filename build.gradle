@@ -1,0 +1,76 @@
+plugins {
+    id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+// JAR name carries the target MC version: carpet-stairs-addition-v<modVersion>-mc<gameVersion>.jar
+def versionedJarName = "${project.archives_base_name}-v${project.version}-mc${project.minecraft_version}.jar"
+
+afterEvaluate {
+    tasks.named("jar") { archiveFileName = versionedJarName }
+    tasks.matching { it.name == "remapJar" }.configureEach { archiveFileName = versionedJarName }
+    tasks.named("sourcesJar") { archiveClassifier = "sources" }
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.archives_base_name}" }
+    }
+}
+
+
+
+repositories {
+    maven {
+        name = 'Carpet'
+        url = 'https://masa.dy.fi/maven'
+    }
+    mavenCentral()
+}
+
+loom {
+    splitEnvironmentSourceSets()
+
+    mods {
+        "carpetstairsaddition" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "carpet:fabric-carpet:${project.carpet_core_version}"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "minecraft_version", project.minecraft_version
+    inputs.property "minecraft_version_range", project.minecraft_version_range
+    inputs.property "carpet_min_version", project.carpet_min_version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version,
+               "minecraft_version": project.minecraft_version,
+               "minecraft_version_range": project.minecraft_version_range,
+               "carpet_min_version": project.carpet_min_version
+    }
+}
+
+// MC 1.21.x needs Java 21, MC 26.x needs Java 25
+def javaVersion = project.minecraft_version.startsWith('1.') ? 21 : 25
+
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.toVersion(javaVersion)
+    targetCompatibility = JavaVersion.toVersion(javaVersion)
+}
