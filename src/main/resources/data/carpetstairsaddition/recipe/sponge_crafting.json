@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "HHH",
+    "HSH",
+    "HHH"
+  ],
+  "key": {
+    "H": "minecraft:hay_block",
+    "S": "minecraft:slime_block"
+  },
+  "result": {
+    "id": "minecraft:sponge",
+    "count": 1
+  }
+}
