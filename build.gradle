@@ -1,0 +1,94 @@
+plugins {
+    id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+// JAR name carries the target MC version: carpet-stairs-addition-v<modVersion>-mc<gameVersion>.jar
+def versionedJarName = "${project.archives_base_name}-v${project.version}-mc${project.minecraft_version}.jar"
+
+afterEvaluate {
+    tasks.named("jar") { archiveFileName = versionedJarName }
+    tasks.matching { it.name == "remapJar" }.configureEach { archiveFileName = versionedJarName }
+    tasks.named("sourcesJar") { archiveClassifier = "sources" }
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.archives_base_name}" }
+    }
+}
+
+
+
+configurations.configureEach {
+    // Dev runtime only: Loom resolves sponge-mixin 0.12.4 for MC 1.20.1, which current fabric-loader
+    // cannot bootstrap (missing IAdviceProvider). Compilation is unaffected.
+    if (name.toLowerCase().contains("runtimeclasspath")) {
+        resolutionStrategy.force "net.fabricmc:sponge-mixin:0.17.4+mixin.0.8.7"
+    }
+}
+
+repositories {
+    maven {
+        name = 'Carpet'
+        url = 'https://masa.dy.fi/maven'
+    }
+    mavenCentral()
+}
+
+loom {
+    splitEnvironmentSourceSets()
+
+    mods {
+        "carpetstairsaddition" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "carpet:fabric-carpet:${project.carpet_core_version}"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "minecraft_version", project.minecraft_version
+    inputs.property "minecraft_version_range", project.minecraft_version_range
+    inputs.property "carpet_min_version", project.carpet_min_version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version,
+               "minecraft_version": project.minecraft_version,
+               "minecraft_version_range": project.minecraft_version_range,
+               "carpet_min_version": project.carpet_min_version
+    }
+}
+
+// MC 1.20.x needs Java 17, MC 1.21.x needs Java 21, MC 26.x needs Java 25
+def javaVersion = project.minecraft_version.startsWith('1.20') ? 17 : (project.minecraft_version.startsWith('1.') ? 21 : 25)
+
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.toVersion(javaVersion)
+    targetCompatibility = JavaVersion.toVersion(javaVersion)
+}
+
+// The MC 1.20.1 dev runtime uses sponge-mixin 0.12.4, which cannot run on JDK 25;
+// keep the Gradle daemon on JDK 25 (Loom 1.19 requires it) but launch the game on JDK 21.
+if (project.minecraft_version.startsWith('1.20')) {
+    tasks.matching { it.name == 'runServer' || it.name == 'runClient' }.configureEach {
+        javaLauncher = javaToolchains.launcherFor {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
+}

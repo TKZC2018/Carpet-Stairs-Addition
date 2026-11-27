@@ -1,0 +1,24 @@
+{
+  "carpet.category.CSA": "CSA",
+  "carpet.rule.enchantedGoldenAppleCrafting.name": "附魔金苹果合成",
+  "carpet.rule.enchantedGoldenAppleCrafting.desc": "允许使用8个金块和1个金苹果合成附魔金苹果",
+  "carpet.rule.spongeCrafting.name": "海绵合成",
+  "carpet.rule.spongeCrafting.desc": "允许使用8个干草块和1个粘液块合成海绵",
+  "carpet.rule.heartOfTheSeaCrafting.name": "海洋之心合成",
+  "carpet.rule.heartOfTheSeaCrafting.desc": "允许使用4个青金石和1个下界之星合成海洋之心",
+  "carpet.rule.betterDispenserCrafting.name": "更好的发射器合成",
+  "carpet.rule.betterDispenserCrafting.desc": "更方便的发射器合成配方",
+  "carpet.rule.betterMinecartCrafting.name": "更好的矿车合成",
+  "carpet.rule.betterMinecartCrafting.desc": "更方便的矿车合成配方",
+  "advancements.carpetstairsaddition.better_minecart_crafting.title": "批量矿车制作",
+  "advancements.carpetstairsaddition.better_minecart_crafting.description": "使用更好的矿车合成配方制作矿车",
+  "carpet.rule.betterElytraCrafting.name": "更好的鞘翅复制",
+  "carpet.rule.betterElytraCrafting.desc": "允许使用8个幻翼膜和1个鞘翅复制鞘翅",
+  "advancements.carpetstairsaddition.better_elytra_crafting.title": "鞘翅复制",
+  "advancements.carpetstairsaddition.better_elytra_crafting.description": "使用更好的鞘翅复制配方制作鞘翅",
+  
+  "carpet.rule.enhancedEnchantedGoldenApple.name": "附魔金苹果增强",
+  "carpet.rule.enhancedEnchantedGoldenApple.desc": "恢复1.9之前的附魔金苹果效果",
+  "carpet.rule.playerHeadCrafting.name": "玩家头颅合成",
+  "carpet.rule.playerHeadCrafting.desc": "将成书和凋零骷髅头颅丢在一起生成对应玩家的头颅"
+}

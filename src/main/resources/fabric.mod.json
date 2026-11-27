@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "carpetstairsaddition",
+  "version": "${version}",
+  "name": "Carpet Stairs Addition",
+  "description": "A simple Carpet extension mod that adds configurable crafting recipes.",
+  "authors": [
+    "TKZC2018"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+  "license": "MIT",
+  "icon": "assets/carpetstairsaddition/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "carpetstairsaddition.CarpetStairsAdditionMod"
+    ]
+  },
+  "mixins": [
+    "carpetstairsaddition.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "${minecraft_version_range}",
+    "carpet": ">=${carpet_min_version}"
+  }
+}
