@@ -1,0 +1,24 @@
+{
+  "carpet.category.CSA": "CSA",
+  "carpet.rule.enchantedGoldenAppleCrafting.name": "Enchanted Golden Apple Crafting",
+  "carpet.rule.enchantedGoldenAppleCrafting.desc": "Allows crafting enchanted golden apples using 8 gold blocks and 1 golden apple",
+  "carpet.rule.spongeCrafting.name": "Sponge Crafting",
+  "carpet.rule.spongeCrafting.desc": "Allows crafting sponge using 8 hay blocks and 1 slime block",
+  "carpet.rule.heartOfTheSeaCrafting.name": "Heart of the Sea Crafting",
+  "carpet.rule.heartOfTheSeaCrafting.desc": "Allows crafting heart of the sea using 4 lapis lazuli and 1 nether star",
+  "carpet.rule.betterDispenserCrafting.name": "Better Dispenser Crafting",
+  "carpet.rule.betterDispenserCrafting.desc": "More convenient dispenser crafting recipe",
+  "carpet.rule.betterMinecartCrafting.name": "Better Minecart Crafting",
+  "carpet.rule.betterMinecartCrafting.desc": "More convenient minecart crafting recipe",
+  "advancements.carpetstairsaddition.better_minecart_crafting.title": "Batch Minecart Production",
+  "advancements.carpetstairsaddition.better_minecart_crafting.description": "Craft a minecart using the better minecart crafting recipe",
+  "carpet.rule.betterElytraCrafting.name": "Better Elytra Duplication",
+  "carpet.rule.betterElytraCrafting.desc": "Allows duplicating elytra using 8 phantom membranes and 1 elytra",
+  "advancements.carpetstairsaddition.better_elytra_crafting.title": "Elytra Duplication",
+  "advancements.carpetstairsaddition.better_elytra_crafting.description": "Craft an elytra using the better elytra duplication recipe",
+  
+  "carpet.rule.enhancedEnchantedGoldenApple.name": "Enhanced Enchanted Golden Apple",
+  "carpet.rule.enhancedEnchantedGoldenApple.desc": "Restore pre-1.9 enchanted golden apple effects",
+  "carpet.rule.playerHeadCrafting.name": "Player Head Crafting",
+  "carpet.rule.playerHeadCrafting.desc": "Combine written book with wither skeleton skull to create player head"
+}
